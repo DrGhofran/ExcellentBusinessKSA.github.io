@@ -71,6 +71,7 @@
   #hero::before {
     content: '';
     position: absolute; inset: 0;
+    pointer-events: none;
     background-image:
       radial-gradient(circle at 70% 40%, rgba(92,200,92,0.08) 0%, transparent 55%),
       radial-gradient(circle at 20% 80%, rgba(201,168,76,0.06) 0%, transparent 40%);
@@ -974,43 +975,40 @@
   reveals.forEach(r => observer.observe(r));
 
   // ─── BILINGUAL TOGGLE ───
-  let currentLang = 'en';
+  var currentLang = 'en';
 
   function toggleLang() {
-    currentLang = currentLang === 'en' ? 'ar' : 'en';
-    const html = document.documentElement;
-    const btn = document.getElementById('langBtn');
-    const label = document.getElementById('langLabel');
+    currentLang = (currentLang === 'en') ? 'ar' : 'en';
+    var htmlEl = document.documentElement;
+    var btn = document.getElementById('langBtn');
+    var label = document.getElementById('langLabel');
 
     if (currentLang === 'ar') {
-      html.setAttribute('dir', 'rtl');
-      html.setAttribute('lang', 'ar');
+      htmlEl.setAttribute('dir', 'rtl');
+      htmlEl.setAttribute('lang', 'ar');
       btn.querySelector('.lang-flag').textContent = '🇬🇧';
       label.textContent = 'English';
     } else {
-      html.setAttribute('dir', 'ltr');
-      html.setAttribute('lang', 'en');
+      htmlEl.setAttribute('dir', 'ltr');
+      htmlEl.setAttribute('lang', 'en');
       btn.querySelector('.lang-flag').textContent = '🇸🇦';
       label.textContent = 'العربية';
     }
 
-    // Swap all data-en / data-ar text
-    document.querySelectorAll('[data-en][data-ar]').forEach(el => {
-      const val = el.getAttribute('data-' + currentLang);
-      // Handle elements with innerHTML (br tags etc)
-      if (el.tagName === 'H1' || el.tagName === 'H2') {
-        el.textContent = val;
-      } else if (el.tagName === 'BUTTON' || el.tagName === 'A' || el.tagName === 'OPTION') {
-        el.textContent = val;
-      } else {
-        el.textContent = val;
+    // Swap all [data-en][data-ar] elements (except titles handled separately)
+    var allEls = document.querySelectorAll('[data-en][data-ar]');
+    for (var i = 0; i < allEls.length; i++) {
+      var el = allEls[i];
+      if (!el.classList.contains('hero-title') && !el.classList.contains('section-title')) {
+        el.textContent = el.getAttribute('data-' + currentLang);
       }
-    });
+    }
 
     // Swap placeholders
-    document.querySelectorAll('[data-placeholder-en]').forEach(el => {
-      el.placeholder = el.getAttribute('data-placeholder-' + currentLang);
-    });
+    var phEls = document.querySelectorAll('[data-placeholder-en]');
+    for (var j = 0; j < phEls.length; j++) {
+      phEls[j].placeholder = phEls[j].getAttribute('data-placeholder-' + currentLang);
+    }
 
     // Fix hero title line breaks
     const heroTitle = document.querySelector('.hero-title');
