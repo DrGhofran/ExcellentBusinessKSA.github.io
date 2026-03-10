@@ -17,17 +17,17 @@
   body { font-family: 'DM Sans', sans-serif; background: var(--white); color: var(--text); overflow-x: hidden; }
 
   /* LANG VISIBILITY */
-  .lang-en, .lang-ar { display: none; }
-  html[lang="en"] .lang-en { display: contents; }
-  html[lang="ar"] .lang-ar { display: contents; }
-  html[lang="en"] .lang-en.block { display: block; }
-  html[lang="ar"] .lang-ar.block { display: block; }
-  html[lang="en"] .lang-en.flex { display: flex; }
-  html[lang="ar"] .lang-ar.flex { display: flex; }
-  html[lang="en"] .lang-en.grid { display: grid; }
-  html[lang="ar"] .lang-ar.grid { display: grid; }
-  html[lang="en"] .lang-en.inline-block { display: inline-block; }
-  html[lang="ar"] .lang-ar.inline-block { display: inline-block; }
+  .lang-en, .lang-ar { display: none !important; }
+  html[lang="en"] .lang-en { display: contents !important; }
+  html[lang="ar"] .lang-ar { display: contents !important; }
+  html[lang="en"] .lang-en.block { display: block !important; }
+  html[lang="ar"] .lang-ar.block { display: block !important; }
+  html[lang="en"] .lang-en.flex { display: flex !important; }
+  html[lang="ar"] .lang-ar.flex { display: flex !important; }
+  html[lang="en"] .lang-en.grid { display: grid !important; }
+  html[lang="ar"] .lang-ar.grid { display: grid !important; }
+  html[lang="en"] .lang-en.inline-block { display: inline-block !important; }
+  html[lang="ar"] .lang-ar.inline-block { display: inline-block !important; }
   html[lang="ar"] body { font-family: 'Noto Kufi Arabic', sans-serif; }
 
   /* NAV */
@@ -64,7 +64,7 @@
   #hero {
     min-height: 100vh; background: var(--navy);
     display: flex; flex-direction: column; justify-content: center;
-    position: relative; overflow: hidden; padding: 140px 60px 80px;
+    position: relative; overflow: hidden; padding: 140px 60px 160px;
   }
   #hero::before {
     content: ''; position: absolute; inset: 0; pointer-events: none;
@@ -95,7 +95,7 @@
   .btn-primary:hover { background: var(--green-dark); transform: translateY(-2px); }
   .btn-outline { background: transparent; color: var(--white); padding: 14px 36px; font-weight: 500; font-size: 0.9rem; letter-spacing: 0.06em; border: 1px solid rgba(255,255,255,0.25); cursor: pointer; border-radius: 2px; transition: all 0.25s; text-decoration: none; display: inline-block; }
   .btn-outline:hover { border-color: var(--green); color: var(--green); }
-  .hero-stats { position: absolute; bottom: 0; left: 0; right: 0; background: rgba(255,255,255,0.04); border-top: 1px solid rgba(92,200,92,0.15); display: flex; animation: fadeUp 0.8s 1.3s both; }
+  .hero-stats { position: absolute; bottom: 0; left: 0; right: 0; background: rgba(255,255,255,0.04); border-top: 1px solid rgba(92,200,92,0.15); display: flex; animation: fadeUp 0.8s 1.3s both; z-index: 2; }
   .stat-item { flex: 1; padding: 28px 20px; text-align: center; border-right: 1px solid rgba(255,255,255,0.06); }
   .stat-item:last-child { border-right: none; }
   .stat-num { display: block; font-size: 2rem; font-weight: 700; color: var(--green); margin-bottom: 4px; }
@@ -263,7 +263,7 @@
 
   <h1 class="hero-title">
     <span class="lang-en block">Advancing Healthcare<br/>With <span class="green">Precision</span> &amp;<br/><span class="gold">Innovation</span></span>
-    <span class="lang-ar block">نرتقي بالرعاية الصحية<br/>بـ <span class="green">الدقة</span> و<br/><span class="gold">الابتكار</span></span>
+    <span class="lang-ar block">نرتقي بالرعاية الصحية<br/>بـ <span class="green">الدقة</span> و<span class="gold">الابتكار</span></span>
   </h1>
 
   <p class="hero-sub lang-en block">Excellent Business Trading Co. brings world-class medical solutions and cutting-edge products to the Saudi healthcare sector — empowering providers, improving outcomes, and driving Vision 2030.</p>
